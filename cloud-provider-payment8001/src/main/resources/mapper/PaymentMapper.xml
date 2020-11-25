@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guigu.cloud.mapper.PaymentMapper">
+    <resultMap id="BaseResult" type="com.guigu.cloud.entity.Payment">
+        <id property="id" column="id"/>
+        <result property="series" column="series"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="BaseResult">
+        select * from payment where id=#{id}
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into payment (series) values (#{series})
+    </insert>
+
+</mapper>
