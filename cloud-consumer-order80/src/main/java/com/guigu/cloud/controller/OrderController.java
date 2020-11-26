@@ -18,7 +18,8 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static String BASE_PATH="http://localhost:8001";
+//    private static String BASE_PATH="http://localhost:8001";
+    private static String BASE_PATH="http://CLOUD-PAYMENT-SERVICE";//通过服务名称调用
 
     @GetMapping("/order/{id}")
     public ResultData selectById(@PathVariable("id")String id){
