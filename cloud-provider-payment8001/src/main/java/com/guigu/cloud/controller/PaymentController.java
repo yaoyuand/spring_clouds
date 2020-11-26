@@ -5,7 +5,12 @@ import com.guigu.cloud.entity.ResultData;
 import com.guigu.cloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -13,6 +18,12 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
+
+    @Value("${server.port}")
+    private String serverPort;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @GetMapping("/payment/{id}")
     public ResultData selectById(@PathVariable("id")String id){
@@ -23,7 +34,7 @@ public class PaymentController {
         }else{
             log.info("查询成功");
         }
-        return ResultData.success(payment);
+        return new ResultData("200","查询成功,serverPort:"+serverPort,payment);
     }
 
     @PostMapping("/payment/save")
@@ -36,5 +47,21 @@ public class PaymentController {
             log.info("插入成功!");
         }
         return ResultData.success(id);
+    }
+
+    @GetMapping("/discover")
+    public Object discover(){
+        List<String> serviceList=discoveryClient.getServices();
+        log.info("获取服务名称为:");
+        serviceList.forEach(data->{
+            log.info("*********serviceName:"+data);
+        });
+        log.info("获取服务信息为:");
+        List<ServiceInstance> serviceInstances=discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        serviceInstances.forEach(serviceInstance -> {
+            log.info("host:"+serviceInstance.getHost()+" instanceId:"+serviceInstance.getInstanceId()+" scheme:"+serviceInstance.getScheme()+" port:"+serviceInstance.getPort()+" url:"+serviceInstance.getUri());
+        });
+
+        return discoveryClient;
     }
 }

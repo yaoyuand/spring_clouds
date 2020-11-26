@@ -17,3 +17,19 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.guigu.cloud.entity  #所有entity别名所在包
+
+
+eureka:
+  client:
+    register-with-eureka: true #向eureka注册中心注册
+    fetch-registry: true   #扫描
+    service-url:
+#      defaultZone: http://localhost:7001/eureka/ # 需要注册的具体服务
+      defaultZone: http://server7002:7002/eureka/, http://service7001:7001/eureka/  #集群注册
+  instance:
+    instance-id: server8001 #设置计算器主机名称
+    prefer-ip-address: true # 查看IP
+    #eureka客户端向服务端发送心跳的时间间隔，单位为秒(默认为30)
+    lease-renewal-interval-in-seconds: 1
+    #eureka服务端在接收到最后一次心跳等待时间上限，(默认为90) 超时剔除
+    lease-expiration-duration-in-seconds: 2
