@@ -1,0 +1,8 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-consumer-zkorder
+  cloud:
+    zookeeper:
+      connect-string: 139.224.49.74:2181  #配置zookeeper远程地址
