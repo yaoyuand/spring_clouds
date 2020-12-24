@@ -4,9 +4,9 @@ import com.guigu.cloud.entity.Payment;
 import com.guigu.cloud.entity.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,4 +30,15 @@ public class OrderController {
     public ResultData save(Payment payment) {
         return restTemplate.postForObject(BASE_PATH+"/payment/save",payment,ResultData.class);
     }
+
+    @GetMapping("/entity/order/{id}")
+    public ResultData entityId(@PathVariable("id")String id){
+        ResponseEntity<ResultData> resultDataResponseEntity=restTemplate.getForEntity(BASE_PATH+"/payment/"+id,ResultData.class);
+        if(resultDataResponseEntity.getStatusCode().is2xxSuccessful()){
+            return resultDataResponseEntity.getBody();
+        }
+        return ResultData.error();
+    }
+
+
 }
