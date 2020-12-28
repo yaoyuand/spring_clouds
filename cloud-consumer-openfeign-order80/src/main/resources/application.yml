@@ -1,0 +1,25 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: openfeign-consumer
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://server7002:7002/eureka/, http://service7001:7001/eureka/
+  instance:
+    instance-id: openfign-order
+    prefer-ip-address: true
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000  #feign请求建立时间
+        readTimeout: 10000     #feign请求处理时间
+
+logging:
+  level:
+    com.guigu.cloud.controller.OpenFeignController: debug
