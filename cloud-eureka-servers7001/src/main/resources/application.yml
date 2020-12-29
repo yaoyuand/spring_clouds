@@ -3,12 +3,12 @@ server:
 
 eureka:
   instance:
-    hostname: service7001
+    hostname: server7001
   client:
     register-with-eureka: false  #不像注册中心注册自己
     fetch-registry: false        #表示自己是注册中心，只负责维护服务，不检索服务
     service-url:
-      defaultZone: http://service7002:7002/eureka/    #注册eureka服务集群
+      defaultZone: http://server7002:7002/eureka/    #注册eureka服务集群
   server:
     #关闭eureka服务保护
     enable-self-preservation: false
