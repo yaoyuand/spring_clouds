@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+/**
+ * 自定义过滤器
+ * */
 @Component
 @Slf4j
 public class GatewayFilter implements GlobalFilter, Ordered {
