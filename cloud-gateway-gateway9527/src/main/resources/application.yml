@@ -1,0 +1,30 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud_gateway
+  cloud:
+    gateway:
+#      routes:
+#        - id: path_route  #唯一标识可以随意设置，但是必须不能够重复
+#          uri: lb://CLOUD-PAYMENT-SERVICE  #需要代理的URL(当设置discovery.locator.enabled之后可以填写注册中心中注册的服务,不然只能设置URL)
+#          predicates:
+#           - Path=/payment/**    #代理的接口详细地址
+#           - Before=2021-01-06T11:20:07.544+08:00[Asia/Shanghai]  #配置在什么时间之前调用
+#           - After=2021-01-04T11:20:07.544+08:00[Asia/Shanghai]   #配置在什么时间之后调用
+#           - Between=2021-01-04T11:20:07.544+08:00[Asia/Shanghai], 2021-01-06T11:20:07.544+08:00[Asia/Shanghai]  #配置在什么时间之间调用
+#           - Cookie=chocolate, ch.p  #设置cookie需要包含的字段
+#           - Header=X-Request-Id, \d+ #设置header中需要包含的字段
+#           - Method=GET,POST #设置方法调用方式
+#           - RemoteAddr=192.168.1.1/24   #设置调用IP
+#           - Weight=group1, 2  #设置权重
+      discovery:
+        locator:
+          enabled: true  #开启识别注册中心注册服务
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://server7001:7001/eureka/
