@@ -16,6 +16,16 @@
     <module>cloud-eureka-servers7001</module>
       <module>cloud-eureka-servers7002</module>
     <module>cloud-provider-payment8002</module>
+      <module>cloud-provider-payment8004</module>
+    <module>cloud-consumer-zkorder80</module>
+      <module>cloud-provider-consulpayment8006</module>
+      <module>cloud-consumer-consulorder80</module>
+      <module>cloud-consumer-mylb-order80</module>
+      <module>cloud-consumer-openfeign-order80</module>
+      <module>cloud-provider-hystrix-payment8001</module>
+      <module>cloud-consumer-feign-hystrix-order80</module>
+      <module>cloud-consumer-hystrix-dashboard9001</module>
+      <module>cloud-gateway-gateway9527</module>
   </modules>
 
   <!--统一管理jar版本-->
@@ -29,6 +39,8 @@
     <mysql.version>5.1.47</mysql.version>
     <druid.version>1.1.16</druid.version>
     <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+    <cloud.zookeeper.version>2.2.2.RELEASE</cloud.zookeeper.version>
+    <cloud.consul.version>2.2.4.RELEASE</cloud.consul.version>
   </properties>
 
   <!--子模块继承之后提供作用:锁定版本+子module不用写groupId和version 只是做申明并不引入依赖，dependencies才是真正引入的依赖-->
