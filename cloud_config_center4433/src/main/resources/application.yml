@@ -1,0 +1,21 @@
+server:
+  port: 4433
+spring:
+  application:
+    name: config_center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yaoyuand/springcloud-config.git
+          search-paths:
+            - springcloud-config
+          default-label: main  #github将默认的分支master改成了main因此这边需要修改
+      label: main
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://server7001:7001/eureka/
