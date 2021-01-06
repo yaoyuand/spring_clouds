@@ -12,6 +12,11 @@ spring:
             - springcloud-config
           default-label: main  #github将默认的分支master改成了main因此这边需要修改
       label: main
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
@@ -19,3 +24,10 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://server7001:7001/eureka/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
