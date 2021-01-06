@@ -10,6 +10,11 @@ spring:
       name: config  #配置文件名称
       profile: dev  #后缀
       uri: http://localhost:4433  #读取配置文件地址
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     fetch-registry: true
