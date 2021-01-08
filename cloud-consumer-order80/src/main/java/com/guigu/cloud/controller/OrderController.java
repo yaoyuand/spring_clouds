@@ -43,5 +43,11 @@ public class OrderController {
         return ResultData.error();
     }
 
+    @GetMapping("/order/zipkin")
+    public String zipkin(){
+        ResponseEntity<String> resultDataResponseEntity=restTemplate.getForEntity(BASE_PATH+"/zipkin",String.class);
+        return resultDataResponseEntity.getBody();
+    }
+
 
 }
