@@ -1,0 +1,16 @@
+#${prefix}-${spring.profiles.active}.${file-extension}
+server:
+  port: 3377
+
+spring:
+  application:
+    name: config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: cc714afc-9ac6-4e50-aa4c-8c2619088f18  #对应nacos配置管理中 命名空间
+        group: DEV_GROUP   #对应nacos配置管理中group
