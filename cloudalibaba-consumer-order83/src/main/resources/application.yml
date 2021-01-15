@@ -1,0 +1,13 @@
+server:
+  port: 83
+
+spring:
+  application:
+    name: cloud-consumer-order #服务名称
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #注册到注册中心地址
+
+order:
+  use-url: http://cloud-provider-payment  #需要调用服务名称
