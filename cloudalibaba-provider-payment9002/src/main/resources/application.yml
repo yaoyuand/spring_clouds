@@ -6,6 +6,6 @@ spring:
     name: cloud-provider-payment
   cloud:
     nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
+      discovery: #集群注册时可以用逗号将多个服务分隔也可以直接添加nginx配置的域名
+        server-addr: 139.224.49.74:8090  #阿里云上面集群配置
 
