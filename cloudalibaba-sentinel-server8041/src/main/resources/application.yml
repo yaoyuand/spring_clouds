@@ -1,0 +1,27 @@
+server:
+  port: 8041
+
+spring:
+  application:
+    name: cloud-sentinel-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848  #nacos服务注册IP
+    sentinel:
+      transport:
+        dashboard: localhost:8080  #sentinel服务注册ip
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848  #nacos地址
+            dataId: cloud-sentinel-server #nacos规则配置中id
+            groupId: DEFAULT_GROUP        #nacos规则配置中组别(默认值)
+            data-type: json               #文件类型
+            rule-type: flow
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
