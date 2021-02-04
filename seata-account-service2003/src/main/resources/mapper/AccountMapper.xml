@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.guigu.dao.AccountMapper">
+
+    <resultMap id="BaseResult" type="com.cloud.guigu.domain.Account">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId"/>
+        <result column="total" property="total"/>
+        <result column="used" property="used"/>
+        <result column="residue" property="residue"/>
+    </resultMap>
+
+    <update id="update">
+        update t_account set used=#{count},residue=total - #{count} where user_id = #{userId}
+    </update>
+
+
+</mapper>
